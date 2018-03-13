@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div id="page">
+
+        <div class="content main">
+
+            <div class="refer">
+
+                <ul>
+
+                    <li>请开调试器观察</li>
+
+                    <li>测试2 html body #page .content.main .refer ul li</li>
+
+                   
+
+                </ul>
+
+             </div>
+             <p>测试3 html body #page .content main p </p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+
+var genCssSelector = function(){
+
+    // your code here
+    //使用递归函数
+    let el = arguments[0];
+    var ret = '123';
+    function getParent(el){
+        if(el.tagName=='HTML'){
+            return el.localName + ' ';
+        }
+        if(el.id){
+            return getParent(el.parentNode) + '#' + el.id + ' ';
+        }else if(el.className){
+            return getParent(el.parentNode) + '.' + el.className + ' ';
+        }else{
+            return getParent(el.parentNode) + el.localName + ' ';
+        }
+    }
+    return getParent(el);
+}
+
+ 
+
+document.addEventListener('click', function(e){
+
+    //点击li时，返回：html body #page .content.main .refer ul li
+
+    console.log(genCssSelector(e.target));
+
+})
+</script>
+
